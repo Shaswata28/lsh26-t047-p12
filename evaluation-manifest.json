@@ -1,7 +1,7 @@
 {
   "team_id": "lsh26-t047",
   "problem_id": "P12",
-  "problem_title": "Personal Ledger: Dhaka Salaried Professional Spending & Savings Pockets",
+  "problem_title": "Personal Ledger:Professional Spending & Savings Pockets",
   "live_url": "https://lsh26-t047-p12.vercel.app",
   "github_url": "https://github.com/Shaswata28/lsh26-t047-p01.git",
   "repository_branch": "main",
@@ -12,7 +12,7 @@
     "state_management": "Zustand",
     "database": "Supabase PostgreSQL with Row Level Security (RLS)",
     "authentication": "Supabase Auth",
-    "ai_vision_ocr": "Google Gemini 1.5 Flash Vision SDK"
+    "ai_vision_ocr": "Google Gemini 3.5 Flash Vision SDK"
   },
   "requirements_status": {
     "requirement_1_income_and_expenses_ocr": {

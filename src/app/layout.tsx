@@ -15,9 +15,9 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: 'Personal Ledger | Track your spending in Dhaka',
+  title: 'Personal Ledger — Spending & Savings Pockets (PWA)',
   description:
-    'A smart personal finance tracker for salaried professionals in Dhaka — track expenses, forecast your month, and hit your savings goals.',
+    'A smart personal finance tracker for salaried professionals — track expenses, forecast your month, and hit your savings goals with 7.5% DPS.',
   manifest: '/manifest.json',
   appleWebApp: {
     capable: true,

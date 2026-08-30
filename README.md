@@ -1,4 +1,4 @@
-# Personal Ledger — Dhaka Spending & Savings Pockets (PWA)
+# Personal Ledger — Spending & Savings Pockets (PWA)
 
 [![Live Deployment](https://img.shields.io/badge/Live%20App-lsh26--t047--p12.vercel.app-10B981?style=for-the-badge&logo=vercel)](https://lsh26-t047-p12.vercel.app/)
 [![Next.js 15](https://img.shields.io/badge/Next.js-15%20App%20Router-white?style=for-the-badge&logo=next.js)](https://nextjs.org/)

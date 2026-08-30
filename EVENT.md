@@ -12,7 +12,7 @@
 ---
 
 ## 🔑 Event Start Code
-- **Event Start Code / Token**: Declared as per official participant pack instructions for `lsh26-t047`.
+- **Event Start Code / Token**: LSH26-8490-C900
 
 ---
 

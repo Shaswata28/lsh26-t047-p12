@@ -28,7 +28,7 @@ This document lists all third-party frameworks, libraries, fonts, icons, utiliti
 
 | Component | Author / Organization | License | Description / Purpose |
 | :--- | :--- | :--- | :--- |
-| **@google/generative-ai** | Google LLC | [Apache-2.0](https://github.com/google-gemini/generative-ai-js/blob/main/LICENSE) | Multimodal Gemini 1.5 Flash Vision SDK for receipt/bill parsing |
+| **@google/generative-ai** | Google LLC | [Apache-2.0](https://github.com/google-gemini/generative-ai-js/blob/main/LICENSE) | Multimodal Gemini 3.5 Flash Vision SDK for receipt/bill parsing |
 
 ---
 

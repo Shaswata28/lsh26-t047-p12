@@ -23,8 +23,8 @@ export async function POST(request: NextRequest) {
     const mimeType = file.type || 'image/jpeg';
 
     const genAI = new GoogleGenerativeAI(apiKey);
-    // Use gemini-1.5-flash for OCR Vision extraction
-    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+    const modelName = process.env.GEMINI_MODEL || 'gemini-3.5-flash';
+    const model = genAI.getGenerativeModel({ model: modelName });
 
     const prompt = `You are reading a receipt, invoice, or bill photo from Bangladesh (e.g. Meena Bazar, Shwapno, DESCO, Pathao, Uber, bKash, etc.).
 Extract the fields and return ONLY a JSON object:
@@ -49,15 +49,30 @@ Rules:
 - confidence: score between 0.0 (uncertain) and 1.0 (certain)
 - If the amount is unclear or not visible, set amount to null and confidence.amount to 0.0`;
 
-    const result = await model.generateContent([
-      prompt,
-      {
-        inlineData: {
-          mimeType,
-          data: base64,
+    let result;
+    try {
+      result = await model.generateContent([
+        prompt,
+        {
+          inlineData: {
+            mimeType,
+            data: base64,
+          },
         },
-      },
-    ]);
+      ]);
+    } catch (modelErr) {
+      // Fallback model support
+      const fallbackModel = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+      result = await fallbackModel.generateContent([
+        prompt,
+        {
+          inlineData: {
+            mimeType,
+            data: base64,
+          },
+        },
+      ]);
+    }
 
     const rawResponse = result.response.text().trim();
 

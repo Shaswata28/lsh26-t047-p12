@@ -24,7 +24,7 @@ In accordance with hackathon competition rules:
    - Next.js 15 (React 19 framework)
    - Tailwind CSS & Lucide Icons (UI styling and iconography)
    - Supabase Client SDK (`@supabase/supabase-js`, `@supabase/ssr`)
-   - Google Generative AI SDK (`@google/genai` / `@google/generative-ai`)
+   - Google Generative AI SDK (`@google/generative-ai` / Gemini 3.5 Flash Vision)
    - Zustand (Client-side state management)
    - `date-fns` (Date utility functions)
    - `framer-motion` (Micro-animations and sheet transitions)

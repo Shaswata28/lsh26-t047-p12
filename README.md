@@ -3,7 +3,7 @@
 [![Live Deployment](https://img.shields.io/badge/Live%20App-lsh26--t047--p12.vercel.app-10B981?style=for-the-badge&logo=vercel)](https://lsh26-t047-p12.vercel.app/)
 [![Next.js 15](https://img.shields.io/badge/Next.js-15%20App%20Router-white?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![Supabase](https://img.shields.io/badge/Database-Supabase%20PostgreSQL-3ECF8E?style=for-the-badge&logo=supabase)](https://supabase.com/)
-[![Gemini 1.5 Flash](https://img.shields.io/badge/AI%20OCR-Gemini%201.5%20Flash%20Vision-4285F4?style=for-the-badge&logo=google)](https://ai.google.dev/)
+[![Gemini 3.5 Flash](https://img.shields.io/badge/AI%20OCR-Gemini%203.5%20Flash%20Vision-4285F4?style=for-the-badge&logo=google)](https://ai.google.dev/)
 
 > **A smart, mobile-first personal finance application tailored for salaried professionals living and working in Dhaka.** Track expenses effortlessly with AI photo receipt OCR, forecast month-end cash runways, receive deterministic data-driven financial insights, and schedule savings pockets with integrated 7.5% Deposit Pension Scheme (DPS) simulations.
 
@@ -14,7 +14,7 @@
 | Metric | Details |
 | :--- | :--- |
 | **Team ID** | `lsh26-t047` |
-| **Problem ID** | `P12` / `P01` (Personal Ledger: Dhaka Salaried Professional Spending & Savings Pockets) |
+| **Problem ID** | `P12` / `P01` (Personal Ledger: Professional Spending & Savings Pockets) |
 | **Live URL** | [https://lsh26-t047-p12.vercel.app](https://lsh26-t047-p12.vercel.app/) |
 | **GitHub Repository** | [https://github.com/Shaswata28/lsh26-t047-p01.git](https://github.com/Shaswata28/lsh26-t047-p01.git) |
 | **Platform** | Mobile-First Progressive Web App (PWA) |
@@ -43,6 +43,7 @@ NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
 SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
 GEMINI_API_KEY=your-gemini-api-key
+GEMINI_MODEL=gemini-3.5-flash
 ```
 
 ### 3. Database Migration
@@ -73,7 +74,7 @@ npm run seed
 - **Monthly Salary Setup**: Configurable in onboarding (`/welcome`), directly on the dashboard card, or in settings (`/settings`).
 - **Manual Expense Entry**: Streamlined bottom sheet with category dropdown selection, amount, date, shop, and notes.
 - **Multimodal AI Receipt OCR**:
-  - Powered by **Google Gemini 1.5 Flash Vision** (`/api/ocr`).
+  - Powered by **Google Gemini 3.5 Flash Vision** (`/api/ocr`).
   - Extracts **amount, merchant/shop name, transaction date, and category** from uploaded bill photos or bKash/Nagad payment screenshots.
   - **Two-Step Verification**: Scanned details are displayed on a verification review modal with confidence scoring, allowing the user to review, edit, or correct any field before committing to the ledger.
 
@@ -136,5 +137,5 @@ npm run seed
 - **Styling**: Tailwind CSS (Onyx & Mint Emerald design tokens)
 - **State Management**: Zustand (Client-side reactive stores)
 - **Database & Auth**: Supabase PostgreSQL with Row Level Security (RLS)
-- **AI & Multimodal Vision**: Google Gemini 1.5 Flash Vision SDK
+- **AI & Multimodal Vision**: Google Gemini 3.5 Flash Vision SDK
 - **Date & Math Utilities**: `date-fns`, custom compound interest engine

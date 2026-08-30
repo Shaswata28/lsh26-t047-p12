@@ -1,0 +1,150 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-bg: #090A0F;
+    --color-surface: #12141D;
+    --color-card: #181B26;
+    --color-card-subtle: #1E2230;
+    --color-border: #262B3D;
+    --color-border-subtle: #1F2332;
+    --color-primary: #10B981;
+    --color-primary-light: #34D399;
+    --color-accent: #06B6D4;
+    --color-danger: #F43F5E;
+    --color-warning: #F59E0B;
+    --color-muted: #8E96AC;
+    --font-inter: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  * {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: #090A0F;
+  }
+
+  body {
+    font-family: var(--font-inter);
+    background-color: #090A0F;
+    color: #F3F4F6;
+    overscroll-behavior-y: none;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Custom subtle scrollbar */
+  ::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #262B3D;
+    border-radius: 9999px;
+  }
+}
+
+/* Mobile-first card styling */
+.mobile-card {
+  background: #141620;
+  border: 1px solid #232738;
+  border-radius: 1.25rem;
+}
+
+.mobile-card-subtle {
+  background: #1A1D2B;
+  border: 1px solid #2B3044;
+  border-radius: 1rem;
+}
+
+.mobile-card-interactive {
+  background: #141620;
+  border: 1px solid #232738;
+  border-radius: 1.25rem;
+  transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.mobile-card-interactive:active {
+  transform: scale(0.985);
+  background: #1A1D2B;
+  border-color: #3B425C;
+}
+
+/* Fintech card metallic / gradient aesthetic */
+.fintech-card {
+  background: linear-gradient(135deg, #102B24 0%, #111A24 50%, #151329 100%);
+  border: 1px solid rgba(52, 211, 153, 0.2);
+  border-radius: 1.5rem;
+  box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.fintech-card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -30%;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Bottom Sheet Modal backdrop & animation */
+.bottom-sheet-backdrop {
+  background: rgba(4, 5, 8, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.bottom-sheet-content {
+  background: #12141D;
+  border-top: 1px solid #262B3D;
+  border-top-left-radius: 1.75rem;
+  border-top-right-radius: 1.75rem;
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.8);
+}
+
+/* Field unsure highlight for OCR constraint */
+.field-unsure-border {
+  border-color: #F59E0B !important;
+  background-color: rgba(245, 158, 11, 0.06) !important;
+}
+
+/* Safe area padding for mobile docks */
+.safe-bottom {
+  padding-bottom: max(1rem, env(safe-area-inset-bottom));
+}
+
+.safe-top {
+  padding-top: max(0.75rem, env(safe-area-inset-top));
+}
+
+/* Camera scan line animation */
+@keyframes scan-line {
+  0% { transform: translateY(0%); opacity: 0.8; }
+  50% { opacity: 1; }
+  100% { transform: translateY(100%); opacity: 0.8; }
+}
+
+.scan-animation {
+  animation: scan-line 2s ease-in-out infinite alternate;
+}
+
+/* Number pulse indicator */
+@keyframes soft-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.08); opacity: 0.85; }
+}
+
+.soft-pulse {
+  animation: soft-pulse 2s ease-in-out infinite;
+}

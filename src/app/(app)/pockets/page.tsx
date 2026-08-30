@@ -8,9 +8,8 @@ import { computeForecast } from '@/lib/engine/forecast';
 import PocketCard from '@/components/pockets/PocketCard';
 import CreatePocketModal from '@/components/pockets/CreatePocketModal';
 import SkeletonCard from '@/components/ui/SkeletonCard';
-import { Plus, PiggyBank, TrendingUp } from 'lucide-react';
+import { Plus, PiggyBank } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { DPS_RATE_DISPLAY, DPS_COMPOUNDING } from '@/lib/engine/dps';
 import { formatBDT } from '@/lib/utils/currency';
 
 export default function PocketsPage() {
@@ -66,21 +65,6 @@ export default function PocketsPage() {
           </div>
         </div>
       )}
-
-      {/* Transparent Stated DPS Rate Declaration Card */}
-      <div className="p-3.5 rounded-2xl bg-[#0B1316] border border-emerald-500/30 space-y-1.5">
-        <div className="flex items-center gap-1.5 text-xs font-bold text-emerald-300">
-          <TrendingUp className="w-4 h-4 text-emerald-400" />
-          <span>Stated DPS Reference: {DPS_RATE_DISPLAY} ({DPS_COMPOUNDING})</span>
-        </div>
-        <p className="text-[11px] text-slate-400 leading-relaxed">
-          Standard regular deposit compound formula:{' '}
-          <code className="text-emerald-400 font-mono text-[10px] bg-[#090A0F] px-1.5 py-0.5 rounded">
-            FV = P × [((1 + 0.075/12)^n - 1) / (0.075/12)] × (1 + 0.075/12)
-          </code>
-          . Regular monthly deposits into a 7.5% DPS earn compound interest to accelerate your goal timeline.
-        </p>
-      </div>
 
       {/* Pockets List */}
       {loading && pockets.length === 0 ? (

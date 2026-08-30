@@ -1,0 +1,58 @@
+{
+  "team_id": "lsh26-t047",
+  "problem_id": "P12",
+  "problem_title": "Personal Ledger: Dhaka Salaried Professional Spending & Savings Pockets",
+  "live_url": "https://lsh26-t047-p12.vercel.app",
+  "github_url": "https://github.com/Shaswata28/lsh26-t047-p01.git",
+  "repository_branch": "main",
+  "app_type": "Progressive Web App (PWA)",
+  "tech_stack": {
+    "frontend_framework": "Next.js 15 (App Router, React 19)",
+    "styling": "Tailwind CSS (Onyx & Mint Emerald Design System)",
+    "state_management": "Zustand",
+    "database": "Supabase PostgreSQL with Row Level Security (RLS)",
+    "authentication": "Supabase Auth",
+    "ai_vision_ocr": "Google Gemini 1.5 Flash Vision SDK"
+  },
+  "requirements_status": {
+    "requirement_1_income_and_expenses_ocr": {
+      "status": "COMPLETED",
+      "features": [
+        "Monthly salary configuration in 3-step onboarding (/welcome), dashboard card, and profile settings",
+        "Manual expense entry with category dropdown selection and amount validation",
+        "Multimodal AI photo receipt and bill OCR via Google Gemini 1.5 Flash Vision",
+        "Two-step verification screen displaying scanned amount, merchant, date, and category before ledger commit"
+      ]
+    },
+    "requirement_2_monthly_dashboard": {
+      "status": "COMPLETED",
+      "features": [
+        "Hero gauge tracking total spent and committed runway against monthly net salary",
+        "Interactive SVG category spending breakdown donut chart",
+        "Ranked largest individual expenses list",
+        "Month-over-Month (MoM) delta comparison table with percentage change and variance"
+      ]
+    },
+    "requirement_3_forecast_and_written_insights": {
+      "status": "COMPLETED",
+      "features": [
+        "Rest-of-month daily burn velocity and month-end projection formulas",
+        "Month-end expected surplus or shortfall calculation",
+        "Deterministic rule-based written insights engine generating at least 3 concrete, category-named insights with exact amounts"
+      ]
+    },
+    "requirement_4_savings_pockets_and_dps": {
+      "status": "COMPLETED",
+      "features": [
+        "Creation of savings pockets with target cost, item specs, and monthly planned contribution",
+        "Forecast-constrained realistic completion dates derived from live disposable surplus",
+        "Opportunity cost insight and 7.5% Annual DPS compound interest regular deposit formula simulation: FV = P * [((1 + r/12)^n - 1) / (r/12)] * (1 + r/12)",
+        "Immediate deduction from available cash balance upon making a pocket deposit"
+      ]
+    }
+  },
+  "setup_instructions": [
+    "npm install",
+    "npm run dev"
+  ]
+}

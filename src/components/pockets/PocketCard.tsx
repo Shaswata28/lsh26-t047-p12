@@ -12,9 +12,10 @@ import {
   DPS_COMPOUNDING,
   dpsTotal,
   dpsInterest,
+  getDPSInsightText,
 } from '@/lib/engine/dps';
 import { format } from 'date-fns';
-import { Target, Calendar, TrendingUp, Plus, Pencil, Trash2, ChevronDown, ChevronUp, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
+import { Target, Calendar, TrendingUp, Plus, Pencil, Trash2, ChevronDown, ChevronUp, CheckCircle2, AlertCircle, Loader2, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import AddContributionModal from './AddContributionModal';
 import PocketDetailModal from './PocketDetailModal';
@@ -56,6 +57,13 @@ export default function PocketCard({ pocket, forecastSurplus }: PocketCardProps)
   const dpsMonths = months ?? 0;
   const dpsTotalVal = dpsMonths > 0 ? dpsTotal(effectiveContrib, dpsMonths) : 0;
   const dpsInterestVal = dpsMonths > 0 ? dpsInterest(effectiveContrib, dpsMonths) : 0;
+
+  const dpsInsight = getDPSInsightText(
+    pocket.target_amount,
+    pocket.saved_amount,
+    pocket.monthly_contribution,
+    forecastSurplus
+  );
 
   const handleDelete = async (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -146,7 +154,7 @@ export default function PocketCard({ pocket, forecastSurplus }: PocketCardProps)
               </span>
             ) : completionDate ? (
               <span className="font-bold text-emerald-300">
-                {format(completionDate, 'MMM yyyy')} ({months} mos)
+                {format(completionDate, 'MMMM yyyy')} ({months} mos)
               </span>
             ) : (
               <span className="font-semibold text-amber-400 flex items-center gap-1 text-[10px]">
@@ -157,15 +165,18 @@ export default function PocketCard({ pocket, forecastSurplus }: PocketCardProps)
           </div>
         </div>
 
-        {/* Contribution Pace Note */}
-        <div className="text-[10px] text-slate-400 flex items-center justify-between">
-          <span>Target deposit: {formatBDT(pocket.monthly_contribution)}/mo</span>
-          {forecastSurplus > 0 && forecastSurplus < pocket.monthly_contribution && (
-            <span className="text-amber-400">
-              (Effective: {formatBDT(effectiveContrib)} by forecast)
-            </span>
-          )}
-        </div>
+        {/* Formatted DPS Suggestion Insight Note */}
+        {!isComplete && dpsInsight.months && (
+          <div className="p-2.5 rounded-xl bg-gradient-to-r from-[#0C1518] to-[#0E1B18] border border-emerald-500/25 space-y-1">
+            <div className="flex items-center gap-1 text-[10px] font-bold text-emerald-400">
+              <TrendingUp className="w-3 h-3" />
+              <span>{DPS_RATE_DISPLAY} Opportunity</span>
+            </div>
+            <p className="text-[11px] text-slate-300 leading-relaxed">
+              {dpsInsight.detail}
+            </p>
+          </div>
+        )}
 
         {/* DPS Projection Accordion Toggle */}
         <div className="pt-2 border-t border-[#1F2332]">

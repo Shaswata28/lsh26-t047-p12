@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { X, Loader2, Save, Target, TrendingUp, Info } from 'lucide-react';
 import { usePocketStore } from '@/lib/store/pocketStore';
 import { type Pocket } from '@/types';
-import { calculateDPS, DPS_RATE_DISPLAY, pocketCompletionMonths, DPS_COMPOUNDING } from '@/lib/engine/dps';
+import { calculateDPS, DPS_RATE_DISPLAY, pocketCompletionMonths, DPS_COMPOUNDING, getDPSInsightText } from '@/lib/engine/dps';
 import { formatBDT } from '@/lib/utils/currency';
 
 interface PocketDetailModalProps {
@@ -36,6 +36,7 @@ export default function PocketDetailModal({ pocket, forecastSurplus, onClose }: 
 
   const effectiveContrib = Math.min(contrib, Math.max(forecastSurplus, 0));
   const dpsRows = months && months > 0 ? calculateDPS(effectiveContrib, Math.min(months, 24)) : [];
+  const dpsInsight = getDPSInsightText(target, pocket.saved_amount, contrib, forecastSurplus);
 
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -68,7 +69,7 @@ export default function PocketDetailModal({ pocket, forecastSurplus, onClose }: 
         <div className="px-4 py-3 border-b border-[#1E2333] flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Target className="w-4 h-4 text-emerald-400" />
-            <h2 className="text-sm font-bold text-white tracking-tight">Pocket Details & DPS Table</h2>
+            <h2 className="text-sm font-bold text-white tracking-tight">Pocket Details & DPS Simulation</h2>
           </div>
           <button
             onClick={onClose}
@@ -104,7 +105,7 @@ export default function PocketDetailModal({ pocket, forecastSurplus, onClose }: 
             </div>
 
             <div className="space-y-1">
-              <label className="text-[11px] font-semibold text-slate-300 block">Target Cost (৳)</label>
+              <label className="text-[11px] font-semibold text-slate-300 block">Target Cost (BDT)</label>
               <input
                 type="number"
                 required
@@ -116,7 +117,7 @@ export default function PocketDetailModal({ pocket, forecastSurplus, onClose }: 
             </div>
 
             <div className="space-y-1">
-              <label className="text-[11px] font-semibold text-slate-300 block">Monthly Deposit (৳)</label>
+              <label className="text-[11px] font-semibold text-slate-300 block">Monthly Deposit (BDT)</label>
               <input
                 type="number"
                 required
@@ -127,6 +128,19 @@ export default function PocketDetailModal({ pocket, forecastSurplus, onClose }: 
               />
             </div>
           </div>
+
+          {/* Stated DPS Opportunity Insight */}
+          {dpsInsight.months && (
+            <div className="p-3 rounded-2xl bg-[#0A1316] border border-emerald-500/30 space-y-1">
+              <div className="flex items-center gap-1.5 text-xs font-bold text-emerald-300">
+                <TrendingUp className="w-3.5 h-3.5 text-emerald-400" />
+                <span>{DPS_RATE_DISPLAY} Compound Insight</span>
+              </div>
+              <p className="text-[11px] text-slate-300 leading-relaxed">
+                {dpsInsight.detail}
+              </p>
+            </div>
+          )}
 
           {/* Full DPS Compound Schedule Table */}
           {dpsRows.length > 0 && (
@@ -144,7 +158,7 @@ export default function PocketDetailModal({ pocket, forecastSurplus, onClose }: 
                   <thead>
                     <tr className="border-b border-[#1E2333] bg-[#0E1018] text-slate-400 font-semibold">
                       <th className="text-left py-2 px-3">Month</th>
-                      <th className="text-right py-2 px-2">Plain</th>
+                      <th className="text-right py-2 px-2">Plain Cash</th>
                       <th className="text-right py-2 px-2 text-teal-400">Interest</th>
                       <th className="text-right py-2 px-3 text-emerald-400">Balance</th>
                     </tr>
